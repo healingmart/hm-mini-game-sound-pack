@@ -1,0 +1,804 @@
+{
+  "pack": "Healing Mart Mini Game Core Sound Pack",
+  "version": "1.1.0",
+  "sampleRate": 44100,
+  "channels": 1,
+  "format": "mp3",
+  "basePath": "sfx/core/v1/",
+  "soundCount": 88,
+  "notes": "단일 통합 팩. 기존 19개 ID와 확장 ID를 하나의 core/v1 경로에서 제공",
+  "sounds": {
+    "ui-tap": {
+      "file": "ui-tap.mp3",
+      "description": "일반 버튼 터치",
+      "category": "ui",
+      "defaultVolume": 0.42,
+      "cooldownMs": 45,
+      "fallbackHz": 720,
+      "durationMs": 120
+    },
+    "ui-select": {
+      "file": "ui-select.mp3",
+      "description": "옵션 선택 완료",
+      "category": "ui",
+      "defaultVolume": 0.48,
+      "cooldownMs": 70,
+      "fallbackHz": 780,
+      "durationMs": 250
+    },
+    "ui-open": {
+      "file": "ui-open.mp3",
+      "description": "모달·바텀시트 열기",
+      "category": "ui",
+      "defaultVolume": 0.48,
+      "cooldownMs": 120,
+      "fallbackHz": 720,
+      "durationMs": 340
+    },
+    "ui-close": {
+      "file": "ui-close.mp3",
+      "description": "모달·바텀시트 닫기",
+      "category": "ui",
+      "defaultVolume": 0.46,
+      "cooldownMs": 120,
+      "fallbackHz": 620,
+      "durationMs": 290
+    },
+    "toggle-on": {
+      "file": "toggle-on.mp3",
+      "description": "소리·옵션 켜기",
+      "category": "ui",
+      "defaultVolume": 0.5,
+      "cooldownMs": 120,
+      "fallbackHz": 820,
+      "durationMs": 210
+    },
+    "toggle-off": {
+      "file": "toggle-off.mp3",
+      "description": "소리·옵션 끄기",
+      "category": "ui",
+      "defaultVolume": 0.48,
+      "cooldownMs": 120,
+      "fallbackHz": 520,
+      "durationMs": 200
+    },
+    "ui-error": {
+      "file": "ui-error.mp3",
+      "description": "입력 오류·실행 불가",
+      "category": "ui",
+      "defaultVolume": 0.58,
+      "cooldownMs": 220,
+      "fallbackHz": 180,
+      "durationMs": 380
+    },
+    "ready": {
+      "file": "ready.mp3",
+      "description": "게임 준비 완료",
+      "category": "flow",
+      "defaultVolume": 0.58,
+      "cooldownMs": 350,
+      "fallbackHz": 720,
+      "durationMs": 500
+    },
+    "countdown": {
+      "file": "countdown.mp3",
+      "description": "시작 전 3·2·1 카운트",
+      "category": "timer",
+      "defaultVolume": 0.52,
+      "cooldownMs": 120,
+      "fallbackHz": 440,
+      "durationMs": 160
+    },
+    "go": {
+      "file": "go.mp3",
+      "description": "게임 출발",
+      "category": "flow",
+      "defaultVolume": 0.68,
+      "cooldownMs": 350,
+      "fallbackHz": 880,
+      "durationMs": 480
+    },
+    "item-move": {
+      "file": "item-move.mp3",
+      "description": "블록·말·카드 이동",
+      "category": "action",
+      "defaultVolume": 0.42,
+      "cooldownMs": 55,
+      "fallbackHz": 720,
+      "durationMs": 90
+    },
+    "reward-coin": {
+      "file": "reward-coin.mp3",
+      "description": "점수·보상 획득",
+      "category": "reward",
+      "defaultVolume": 0.58,
+      "cooldownMs": 90,
+      "fallbackHz": 1040,
+      "durationMs": 300
+    },
+    "combo": {
+      "file": "combo.mp3",
+      "description": "연속 성공·콤보",
+      "category": "reward",
+      "defaultVolume": 0.62,
+      "cooldownMs": 100,
+      "fallbackHz": 880,
+      "durationMs": 520
+    },
+    "timer-warning": {
+      "file": "timer-warning.mp3",
+      "description": "제한시간 임박 알림",
+      "category": "timer",
+      "defaultVolume": 0.56,
+      "cooldownMs": 500,
+      "fallbackHz": 720,
+      "durationMs": 280
+    },
+    "reveal-safe": {
+      "file": "reveal-safe.mp3",
+      "description": "안전·면제 결과",
+      "category": "result",
+      "defaultVolume": 0.64,
+      "cooldownMs": 400,
+      "fallbackHz": 820,
+      "durationMs": 480
+    },
+    "reveal-danger": {
+      "file": "reveal-danger.mp3",
+      "description": "벌칙·위험 결과",
+      "category": "result",
+      "defaultVolume": 0.68,
+      "cooldownMs": 400,
+      "fallbackHz": 130,
+      "durationMs": 600
+    },
+    "success": {
+      "file": "success.mp3",
+      "description": "스테이지 성공",
+      "category": "judgement",
+      "defaultVolume": 0.72,
+      "cooldownMs": 500,
+      "fallbackHz": 920,
+      "durationMs": 820
+    },
+    "fail": {
+      "file": "fail.mp3",
+      "description": "게임·스테이지 실패",
+      "category": "judgement",
+      "defaultVolume": 0.7,
+      "cooldownMs": 500,
+      "fallbackHz": 240,
+      "durationMs": 720
+    },
+    "brand-finish": {
+      "file": "brand-finish.mp3",
+      "description": "Healing Mart 공통 완료 시그니처",
+      "category": "brand",
+      "defaultVolume": 0.78,
+      "cooldownMs": 900,
+      "fallbackHz": 1046,
+      "durationMs": 1180
+    },
+    "ui-back": {
+      "file": "ui-back.mp3",
+      "description": "이전 화면으로 이동",
+      "category": "ui",
+      "defaultVolume": 0.46,
+      "cooldownMs": 90,
+      "fallbackHz": 560,
+      "durationMs": 175
+    },
+    "ui-confirm": {
+      "file": "ui-confirm.mp3",
+      "description": "확인·적용 버튼",
+      "category": "ui",
+      "defaultVolume": 0.52,
+      "cooldownMs": 120,
+      "fallbackHz": 880,
+      "durationMs": 270
+    },
+    "ui-delete": {
+      "file": "ui-delete.mp3",
+      "description": "삭제·제거 동작",
+      "category": "ui",
+      "defaultVolume": 0.52,
+      "cooldownMs": 150,
+      "fallbackHz": 220,
+      "durationMs": 240
+    },
+    "ui-disabled": {
+      "file": "ui-disabled.mp3",
+      "description": "비활성 버튼 터치",
+      "category": "ui",
+      "defaultVolume": 0.38,
+      "cooldownMs": 180,
+      "fallbackHz": 180,
+      "durationMs": 130
+    },
+    "timer-tick": {
+      "file": "timer-tick.mp3",
+      "description": "일반 제한시간 1초 감소음",
+      "category": "timer",
+      "defaultVolume": 0.34,
+      "cooldownMs": 80,
+      "fallbackHz": 620,
+      "durationMs": 120
+    },
+    "timer-urgent": {
+      "file": "timer-urgent.mp3",
+      "description": "마지막 5초 긴급 타이머음",
+      "category": "timer",
+      "defaultVolume": 0.44,
+      "cooldownMs": 80,
+      "fallbackHz": 940,
+      "durationMs": 130
+    },
+    "timer-timeout": {
+      "file": "timer-timeout.mp3",
+      "description": "제한시간 완전 종료",
+      "category": "timer",
+      "defaultVolume": 0.74,
+      "cooldownMs": 650,
+      "fallbackHz": 180,
+      "durationMs": 780
+    },
+    "correct": {
+      "file": "correct.mp3",
+      "description": "문제 정답",
+      "category": "judgement",
+      "defaultVolume": 0.56,
+      "cooldownMs": 90,
+      "fallbackHz": 880,
+      "durationMs": 335
+    },
+    "wrong": {
+      "file": "wrong.mp3",
+      "description": "문제 오답",
+      "category": "judgement",
+      "defaultVolume": 0.58,
+      "cooldownMs": 160,
+      "fallbackHz": 210,
+      "durationMs": 315
+    },
+    "perfect": {
+      "file": "perfect.mp3",
+      "description": "완벽 판정·정확한 타이밍",
+      "category": "judgement",
+      "defaultVolume": 0.72,
+      "cooldownMs": 350,
+      "fallbackHz": 1200,
+      "durationMs": 720
+    },
+    "near-miss": {
+      "file": "near-miss.mp3",
+      "description": "아슬아슬한 근접 판정",
+      "category": "judgement",
+      "defaultVolume": 0.48,
+      "cooldownMs": 180,
+      "fallbackHz": 430,
+      "durationMs": 320
+    },
+    "high-score": {
+      "file": "high-score.mp3",
+      "description": "최고 기록 갱신",
+      "category": "reward",
+      "defaultVolume": 0.78,
+      "cooldownMs": 800,
+      "fallbackHz": 1320,
+      "durationMs": 1050
+    },
+    "score-up": {
+      "file": "score-up.mp3",
+      "description": "점수 증가",
+      "category": "reward",
+      "defaultVolume": 0.48,
+      "cooldownMs": 60,
+      "fallbackHz": 820,
+      "durationMs": 160
+    },
+    "score-down": {
+      "file": "score-down.mp3",
+      "description": "점수 감소·감점",
+      "category": "reward",
+      "defaultVolume": 0.48,
+      "cooldownMs": 100,
+      "fallbackHz": 240,
+      "durationMs": 200
+    },
+    "bonus": {
+      "file": "bonus.mp3",
+      "description": "보너스 획득",
+      "category": "reward",
+      "defaultVolume": 0.66,
+      "cooldownMs": 250,
+      "fallbackHz": 1080,
+      "durationMs": 484
+    },
+    "combo-up": {
+      "file": "combo-up.mp3",
+      "description": "콤보 단계 상승",
+      "category": "reward",
+      "defaultVolume": 0.62,
+      "cooldownMs": 90,
+      "fallbackHz": 980,
+      "durationMs": 362
+    },
+    "streak-break": {
+      "file": "streak-break.mp3",
+      "description": "연속 성공 종료",
+      "category": "reward",
+      "defaultVolume": 0.54,
+      "cooldownMs": 250,
+      "fallbackHz": 260,
+      "durationMs": 420
+    },
+    "life-gain": {
+      "file": "life-gain.mp3",
+      "description": "목숨·기회 추가",
+      "category": "reward",
+      "defaultVolume": 0.62,
+      "cooldownMs": 300,
+      "fallbackHz": 980,
+      "durationMs": 550
+    },
+    "life-lost": {
+      "file": "life-lost.mp3",
+      "description": "목숨·기회 감소",
+      "category": "judgement",
+      "defaultVolume": 0.62,
+      "cooldownMs": 300,
+      "fallbackHz": 170,
+      "durationMs": 520
+    },
+    "round-start": {
+      "file": "round-start.mp3",
+      "description": "라운드 시작",
+      "category": "flow",
+      "defaultVolume": 0.6,
+      "cooldownMs": 350,
+      "fallbackHz": 760,
+      "durationMs": 480
+    },
+    "round-clear": {
+      "file": "round-clear.mp3",
+      "description": "라운드 완료",
+      "category": "flow",
+      "defaultVolume": 0.68,
+      "cooldownMs": 450,
+      "fallbackHz": 980,
+      "durationMs": 982
+    },
+    "stage-up": {
+      "file": "stage-up.mp3",
+      "description": "다음 단계·난이도 상승",
+      "category": "flow",
+      "defaultVolume": 0.66,
+      "cooldownMs": 450,
+      "fallbackHz": 1120,
+      "durationMs": 620
+    },
+    "game-pause": {
+      "file": "game-pause.mp3",
+      "description": "게임 일시정지",
+      "category": "flow",
+      "defaultVolume": 0.48,
+      "cooldownMs": 300,
+      "fallbackHz": 440,
+      "durationMs": 285
+    },
+    "game-resume": {
+      "file": "game-resume.mp3",
+      "description": "게임 재개",
+      "category": "flow",
+      "defaultVolume": 0.52,
+      "cooldownMs": 300,
+      "fallbackHz": 760,
+      "durationMs": 285
+    },
+    "item-pick": {
+      "file": "item-pick.mp3",
+      "description": "아이템 집기·선택",
+      "category": "action",
+      "defaultVolume": 0.42,
+      "cooldownMs": 55,
+      "fallbackHz": 780,
+      "durationMs": 120
+    },
+    "item-drop": {
+      "file": "item-drop.mp3",
+      "description": "아이템 놓기",
+      "category": "action",
+      "defaultVolume": 0.46,
+      "cooldownMs": 70,
+      "fallbackHz": 330,
+      "durationMs": 180
+    },
+    "item-swap": {
+      "file": "item-swap.mp3",
+      "description": "두 항목 위치 교환",
+      "category": "action",
+      "defaultVolume": 0.46,
+      "cooldownMs": 90,
+      "fallbackHz": 720,
+      "durationMs": 240
+    },
+    "item-hit": {
+      "file": "item-hit.mp3",
+      "description": "물체 충돌·타격",
+      "category": "action",
+      "defaultVolume": 0.54,
+      "cooldownMs": 60,
+      "fallbackHz": 180,
+      "durationMs": 180
+    },
+    "item-pop": {
+      "file": "item-pop.mp3",
+      "description": "풍선·타깃 터짐",
+      "category": "action",
+      "defaultVolume": 0.5,
+      "cooldownMs": 65,
+      "fallbackHz": 900,
+      "durationMs": 140
+    },
+    "item-break": {
+      "file": "item-break.mp3",
+      "description": "블록·물체 깨짐",
+      "category": "action",
+      "defaultVolume": 0.58,
+      "cooldownMs": 120,
+      "fallbackHz": 210,
+      "durationMs": 340
+    },
+    "item-lock": {
+      "file": "item-lock.mp3",
+      "description": "잠금·고정",
+      "category": "action",
+      "defaultVolume": 0.46,
+      "cooldownMs": 150,
+      "fallbackHz": 320,
+      "durationMs": 200
+    },
+    "item-unlock": {
+      "file": "item-unlock.mp3",
+      "description": "잠금 해제",
+      "category": "action",
+      "defaultVolume": 0.5,
+      "cooldownMs": 150,
+      "fallbackHz": 820,
+      "durationMs": 280
+    },
+    "card-flip": {
+      "file": "card-flip.mp3",
+      "description": "카드 뒤집기",
+      "category": "action",
+      "defaultVolume": 0.42,
+      "cooldownMs": 70,
+      "fallbackHz": 760,
+      "durationMs": 160
+    },
+    "block-place": {
+      "file": "block-place.mp3",
+      "description": "블록 정확히 놓기",
+      "category": "action",
+      "defaultVolume": 0.48,
+      "cooldownMs": 70,
+      "fallbackHz": 500,
+      "durationMs": 180
+    },
+    "hint": {
+      "file": "hint.mp3",
+      "description": "힌트 열기",
+      "category": "assist",
+      "defaultVolume": 0.52,
+      "cooldownMs": 250,
+      "fallbackHz": 920,
+      "durationMs": 400
+    },
+    "hint-used": {
+      "file": "hint-used.mp3",
+      "description": "힌트 사용 완료",
+      "category": "assist",
+      "defaultVolume": 0.48,
+      "cooldownMs": 250,
+      "fallbackHz": 700,
+      "durationMs": 292
+    },
+    "shuffle": {
+      "file": "shuffle.mp3",
+      "description": "항목 섞기",
+      "category": "random",
+      "defaultVolume": 0.52,
+      "cooldownMs": 250,
+      "fallbackHz": 720,
+      "durationMs": 520
+    },
+    "spin-tick": {
+      "file": "spin-tick.mp3",
+      "description": "룰렛 칸 통과음",
+      "category": "random",
+      "defaultVolume": 0.36,
+      "cooldownMs": 38,
+      "fallbackHz": 780,
+      "durationMs": 75
+    },
+    "spin-stop": {
+      "file": "spin-stop.mp3",
+      "description": "룰렛 정지",
+      "category": "random",
+      "defaultVolume": 0.64,
+      "cooldownMs": 350,
+      "fallbackHz": 420,
+      "durationMs": 480
+    },
+    "random-reveal": {
+      "file": "random-reveal.mp3",
+      "description": "랜덤 결과 공개",
+      "category": "random",
+      "defaultVolume": 0.7,
+      "cooldownMs": 450,
+      "fallbackHz": 960,
+      "durationMs": 680
+    },
+    "winner": {
+      "file": "winner.mp3",
+      "description": "당첨자·승자 발표",
+      "category": "result",
+      "defaultVolume": 0.82,
+      "cooldownMs": 700,
+      "fallbackHz": 1180,
+      "durationMs": 950
+    },
+    "loser": {
+      "file": "loser.mp3",
+      "description": "탈락자·패자 발표",
+      "category": "result",
+      "defaultVolume": 0.68,
+      "cooldownMs": 550,
+      "fallbackHz": 160,
+      "durationMs": 720
+    },
+    "jump": {
+      "file": "jump.mp3",
+      "description": "점프 동작",
+      "category": "movement",
+      "defaultVolume": 0.48,
+      "cooldownMs": 80,
+      "fallbackHz": 760,
+      "durationMs": 240
+    },
+    "land": {
+      "file": "land.mp3",
+      "description": "착지 동작",
+      "category": "movement",
+      "defaultVolume": 0.52,
+      "cooldownMs": 90,
+      "fallbackHz": 120,
+      "durationMs": 200
+    },
+    "dash": {
+      "file": "dash.mp3",
+      "description": "빠른 이동·부스트",
+      "category": "movement",
+      "defaultVolume": 0.54,
+      "cooldownMs": 100,
+      "fallbackHz": 900,
+      "durationMs": 320
+    },
+    "target-hit": {
+      "file": "target-hit.mp3",
+      "description": "타깃 명중",
+      "category": "reaction",
+      "defaultVolume": 0.56,
+      "cooldownMs": 55,
+      "fallbackHz": 980,
+      "durationMs": 160
+    },
+    "target-miss": {
+      "file": "target-miss.mp3",
+      "description": "타깃 빗나감",
+      "category": "reaction",
+      "defaultVolume": 0.48,
+      "cooldownMs": 80,
+      "fallbackHz": 280,
+      "durationMs": 220
+    },
+    "input-key": {
+      "file": "input-key.mp3",
+      "description": "키보드·문자 입력",
+      "category": "ui",
+      "defaultVolume": 0.36,
+      "cooldownMs": 35,
+      "fallbackHz": 900,
+      "durationMs": 100
+    },
+    "drag-start": {
+      "file": "drag-start.mp3",
+      "description": "드래그 시작",
+      "category": "action",
+      "defaultVolume": 0.42,
+      "cooldownMs": 70,
+      "fallbackHz": 620,
+      "durationMs": 160
+    },
+    "drag-end": {
+      "file": "drag-end.mp3",
+      "description": "드래그 놓기",
+      "category": "action",
+      "defaultVolume": 0.44,
+      "cooldownMs": 80,
+      "fallbackHz": 420,
+      "durationMs": 180
+    },
+    "save": {
+      "file": "save.mp3",
+      "description": "저장 완료",
+      "category": "ui",
+      "defaultVolume": 0.52,
+      "cooldownMs": 250,
+      "fallbackHz": 880,
+      "durationMs": 460
+    },
+    "retry": {
+      "file": "retry.mp3",
+      "description": "재도전·다시 하기",
+      "category": "flow",
+      "defaultVolume": 0.52,
+      "cooldownMs": 250,
+      "fallbackHz": 620,
+      "durationMs": 420
+    },
+    "swipe": {
+      "file": "swipe.mp3",
+      "description": "빠른 스와이프",
+      "category": "movement",
+      "defaultVolume": 0.42,
+      "cooldownMs": 55,
+      "fallbackHz": 900,
+      "durationMs": 220
+    },
+    "whoosh": {
+      "file": "whoosh.mp3",
+      "description": "화면 전환·빠른 통과",
+      "category": "movement",
+      "defaultVolume": 0.48,
+      "cooldownMs": 90,
+      "fallbackHz": 760,
+      "durationMs": 340
+    },
+    "slide": {
+      "file": "slide.mp3",
+      "description": "미끄러짐·슬라이드 이동",
+      "category": "movement",
+      "defaultVolume": 0.44,
+      "cooldownMs": 75,
+      "fallbackHz": 420,
+      "durationMs": 280
+    },
+    "bounce": {
+      "file": "bounce.mp3",
+      "description": "튕김·반동",
+      "category": "movement",
+      "defaultVolume": 0.46,
+      "cooldownMs": 65,
+      "fallbackHz": 720,
+      "durationMs": 280
+    },
+    "roll": {
+      "file": "roll.mp3",
+      "description": "굴러가기·주사위 회전",
+      "category": "movement",
+      "defaultVolume": 0.46,
+      "cooldownMs": 90,
+      "fallbackHz": 180,
+      "durationMs": 480
+    },
+    "impact-soft": {
+      "file": "impact-soft.mp3",
+      "description": "가벼운 충돌·착지",
+      "category": "action",
+      "defaultVolume": 0.48,
+      "cooldownMs": 65,
+      "fallbackHz": 130,
+      "durationMs": 200
+    },
+    "impact-hard": {
+      "file": "impact-hard.mp3",
+      "description": "강한 충돌·실패 타격",
+      "category": "action",
+      "defaultVolume": 0.6,
+      "cooldownMs": 140,
+      "fallbackHz": 90,
+      "durationMs": 340
+    },
+    "piece-place": {
+      "file": "piece-place.mp3",
+      "description": "퍼즐 조각 놓기",
+      "category": "puzzle",
+      "defaultVolume": 0.44,
+      "cooldownMs": 55,
+      "fallbackHz": 720,
+      "durationMs": 160
+    },
+    "piece-remove": {
+      "file": "piece-remove.mp3",
+      "description": "퍼즐 조각 제거",
+      "category": "puzzle",
+      "defaultVolume": 0.42,
+      "cooldownMs": 70,
+      "fallbackHz": 320,
+      "durationMs": 180
+    },
+    "match": {
+      "file": "match.mp3",
+      "description": "같은 항목 연결·매치",
+      "category": "puzzle",
+      "defaultVolume": 0.54,
+      "cooldownMs": 90,
+      "fallbackHz": 920,
+      "durationMs": 340
+    },
+    "merge": {
+      "file": "merge.mp3",
+      "description": "합치기·진화",
+      "category": "puzzle",
+      "defaultVolume": 0.56,
+      "cooldownMs": 120,
+      "fallbackHz": 820,
+      "durationMs": 440
+    },
+    "line-clear": {
+      "file": "line-clear.mp3",
+      "description": "줄·행 완성 제거",
+      "category": "puzzle",
+      "defaultVolume": 0.62,
+      "cooldownMs": 220,
+      "fallbackHz": 1040,
+      "durationMs": 620
+    },
+    "false-start": {
+      "file": "false-start.mp3",
+      "description": "너무 일찍 누름·부정 출발",
+      "category": "reaction",
+      "defaultVolume": 0.58,
+      "cooldownMs": 250,
+      "fallbackHz": 170,
+      "durationMs": 320
+    },
+    "buzzer": {
+      "file": "buzzer.mp3",
+      "description": "종료·탈락 버저",
+      "category": "judgement",
+      "defaultVolume": 0.64,
+      "cooldownMs": 500,
+      "fallbackHz": 160,
+      "durationMs": 680
+    },
+    "drumroll": {
+      "file": "drumroll.mp3",
+      "description": "결과 공개 전 긴장 연출",
+      "category": "random",
+      "defaultVolume": 0.56,
+      "cooldownMs": 600,
+      "fallbackHz": 180,
+      "durationMs": 1000
+    },
+    "achievement": {
+      "file": "achievement.mp3",
+      "description": "업적·특별 보상 달성",
+      "category": "reward",
+      "defaultVolume": 0.74,
+      "cooldownMs": 700,
+      "fallbackHz": 1040,
+      "durationMs": 1050
+    },
+    "tie": {
+      "file": "tie.mp3",
+      "description": "무승부·동점 결과",
+      "category": "result",
+      "defaultVolume": 0.56,
+      "cooldownMs": 450,
+      "fallbackHz": 520,
+      "durationMs": 660
+    }
+  }
+}
