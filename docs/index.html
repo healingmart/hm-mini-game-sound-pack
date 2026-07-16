@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f5ff">
+<title>Healing Mart Mini Game Sound Pack</title>
+<style>
+:root{font-family:Pretendard,"Noto Sans KR",system-ui,sans-serif;color:#17213b;background:#f5f7fc}
+*{box-sizing:border-box}
+body{margin:0}
+main{width:min(1100px,100%);margin:0 auto;padding:30px 18px 60px}
+h1{margin:0;font-size:clamp(26px,5vw,42px);letter-spacing:-.045em}
+.lead{margin:10px 0 0;color:#65708b;line-height:1.7}
+.panel{margin-top:20px;padding:16px;border:1px solid #dce2f0;border-radius:18px;background:#fff;box-shadow:0 10px 30px rgba(33,54,98,.08)}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.control{min-height:44px;padding:10px 15px;border:1px solid #ccd5e7;border-radius:12px;background:#fff;color:#26395f;font-weight:850;cursor:pointer}
+.control.primary{color:#fff;border-color:#6558df;background:#6558df}
+.status{flex:1;min-width:230px;min-height:44px;display:flex;align-items:center;padding:10px 14px;border-radius:12px;background:#f2f4fb;color:#505e7b;font-weight:750}
+.meta{margin-top:10px;color:#76819a;font-size:13px}
+.grid{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.sound-card{min-height:82px;padding:14px;border:1px solid #dce2ef;border-radius:15px;background:#fff;color:#1e3158;text-align:left;cursor:pointer;box-shadow:0 5px 15px rgba(43,65,107,.05)}
+.sound-card:hover{border-color:#887feb;transform:translateY(-1px)}
+.sound-card.is-playing{border-color:#6558df;box-shadow:0 0 0 3px rgba(101,88,223,.13)}
+.sound-card strong{display:block;font-size:15px}
+.sound-card small{display:block;margin-top:7px;color:#74809a;line-height:1.45}
+.error{color:#b33d45;background:#fff0f1}
+.success{color:#157552;background:#eaf9f2}
+</style>
+</head>
+<body>
+<main>
+  <h1>Healing Mart Mini Game Sound Pack</h1>
+  <p class="lead">실제 게임과 같은 HMAudio 관리자, sounds.json, MP3 경로를 사용해 89개 사운드를 검사합니다.</p>
+
+  <section class="panel">
+    <div class="toolbar">
+      <button type="button" class="control primary" id="soundToggle">사운드 켜짐</button>
+      <button type="button" class="control" id="stopAll">모두 정지</button>
+      <button type="button" class="control" id="reloadManifest">매니페스트 다시 읽기</button>
+      <div class="status" id="status" role="status" aria-live="polite">검사 준비 중</div>
+    </div>
+    <div class="meta" id="meta">관리자와 sounds.json을 확인하고 있습니다.</div>
+  </section>
+
+  <section class="grid">
+    <button type="button" class="sound-card" data-sound="ui-tap"><strong>ui-tap</strong><small>일반 버튼 터치</small></button><button type="button" class="sound-card" data-sound="ui-select"><strong>ui-select</strong><small>옵션 선택 완료</small></button><button type="button" class="sound-card" data-sound="ui-open"><strong>ui-open</strong><small>모달·바텀시트 열기</small></button><button type="button" class="sound-card" data-sound="ui-close"><strong>ui-close</strong><small>모달·바텀시트 닫기</small></button><button type="button" class="sound-card" data-sound="toggle-on"><strong>toggle-on</strong><small>소리·옵션 켜기</small></button><button type="button" class="sound-card" data-sound="toggle-off"><strong>toggle-off</strong><small>소리·옵션 끄기</small></button><button type="button" class="sound-card" data-sound="ui-error"><strong>ui-error</strong><small>입력 오류·실행 불가</small></button><button type="button" class="sound-card" data-sound="ready"><strong>ready</strong><small>게임 준비 완료</small></button><button type="button" class="sound-card" data-sound="countdown"><strong>countdown</strong><small>3·2·1 카운트다운</small></button><button type="button" class="sound-card" data-sound="go"><strong>go</strong><small>게임 출발</small></button><button type="button" class="sound-card" data-sound="item-move"><strong>item-move</strong><small>블록·말·카드 이동</small></button><button type="button" class="sound-card" data-sound="reward-coin"><strong>reward-coin</strong><small>점수·보상 획득</small></button><button type="button" class="sound-card" data-sound="combo"><strong>combo</strong><small>연속 성공·콤보</small></button><button type="button" class="sound-card" data-sound="timer-warning"><strong>timer-warning</strong><small>제한시간 경고</small></button><button type="button" class="sound-card" data-sound="reveal-safe"><strong>reveal-safe</strong><small>안전·면제 결과</small></button><button type="button" class="sound-card" data-sound="reveal-danger"><strong>reveal-danger</strong><small>벌칙·폭탄 결과</small></button><button type="button" class="sound-card" data-sound="success"><strong>success</strong><small>스테이지 성공</small></button><button type="button" class="sound-card" data-sound="fail"><strong>fail</strong><small>실패·시간 종료</small></button><button type="button" class="sound-card" data-sound="brand-finish"><strong>brand-finish</strong><small>Healing Mart 공통 완료 시그니처</small></button><button type="button" class="sound-card" data-sound="ui-back"><strong>ui-back</strong><small>이전 화면으로 이동</small></button><button type="button" class="sound-card" data-sound="ui-confirm"><strong>ui-confirm</strong><small>확인·적용 버튼</small></button><button type="button" class="sound-card" data-sound="ui-delete"><strong>ui-delete</strong><small>삭제·제거 동작</small></button><button type="button" class="sound-card" data-sound="ui-disabled"><strong>ui-disabled</strong><small>비활성 버튼 터치</small></button><button type="button" class="sound-card" data-sound="timer-tick"><strong>timer-tick</strong><small>일반 제한시간 1초 감소음</small></button><button type="button" class="sound-card" data-sound="timer-urgent"><strong>timer-urgent</strong><small>마지막 5초 긴급 타이머음</small></button><button type="button" class="sound-card" data-sound="timer-timeout"><strong>timer-timeout</strong><small>제한시간 완전 종료</small></button><button type="button" class="sound-card" data-sound="correct"><strong>correct</strong><small>문제 정답</small></button><button type="button" class="sound-card" data-sound="wrong"><strong>wrong</strong><small>문제 오답</small></button><button type="button" class="sound-card" data-sound="perfect"><strong>perfect</strong><small>완벽 판정·정확한 타이밍</small></button><button type="button" class="sound-card" data-sound="near-miss"><strong>near-miss</strong><small>아슬아슬한 근접 판정</small></button><button type="button" class="sound-card" data-sound="high-score"><strong>high-score</strong><small>최고 기록 갱신</small></button><button type="button" class="sound-card" data-sound="score-up"><strong>score-up</strong><small>점수 증가</small></button><button type="button" class="sound-card" data-sound="score-down"><strong>score-down</strong><small>점수 감소·감점</small></button><button type="button" class="sound-card" data-sound="bonus"><strong>bonus</strong><small>보너스 획득</small></button><button type="button" class="sound-card" data-sound="combo-up"><strong>combo-up</strong><small>콤보 단계 상승</small></button><button type="button" class="sound-card" data-sound="streak-break"><strong>streak-break</strong><small>연속 성공 종료</small></button><button type="button" class="sound-card" data-sound="life-gain"><strong>life-gain</strong><small>목숨·기회 추가</small></button><button type="button" class="sound-card" data-sound="life-lost"><strong>life-lost</strong><small>목숨·기회 감소</small></button><button type="button" class="sound-card" data-sound="round-start"><strong>round-start</strong><small>라운드 시작</small></button><button type="button" class="sound-card" data-sound="round-clear"><strong>round-clear</strong><small>라운드 완료</small></button><button type="button" class="sound-card" data-sound="stage-up"><strong>stage-up</strong><small>다음 단계·난이도 상승</small></button><button type="button" class="sound-card" data-sound="game-pause"><strong>game-pause</strong><small>게임 일시정지</small></button><button type="button" class="sound-card" data-sound="game-resume"><strong>game-resume</strong><small>게임 재개</small></button><button type="button" class="sound-card" data-sound="item-pick"><strong>item-pick</strong><small>아이템 집기·선택</small></button><button type="button" class="sound-card" data-sound="item-drop"><strong>item-drop</strong><small>아이템 놓기</small></button><button type="button" class="sound-card" data-sound="item-swap"><strong>item-swap</strong><small>두 항목 위치 교환</small></button><button type="button" class="sound-card" data-sound="item-hit"><strong>item-hit</strong><small>물체 충돌·타격</small></button><button type="button" class="sound-card" data-sound="item-pop"><strong>item-pop</strong><small>풍선·타깃 터짐</small></button><button type="button" class="sound-card" data-sound="item-break"><strong>item-break</strong><small>블록·물체 깨짐</small></button><button type="button" class="sound-card" data-sound="item-lock"><strong>item-lock</strong><small>잠금·고정</small></button><button type="button" class="sound-card" data-sound="item-unlock"><strong>item-unlock</strong><small>잠금 해제</small></button><button type="button" class="sound-card" data-sound="card-flip"><strong>card-flip</strong><small>카드 뒤집기</small></button><button type="button" class="sound-card" data-sound="block-place"><strong>block-place</strong><small>블록 정확히 놓기</small></button><button type="button" class="sound-card" data-sound="hint"><strong>hint</strong><small>힌트 열기</small></button><button type="button" class="sound-card" data-sound="hint-used"><strong>hint-used</strong><small>힌트 사용 완료</small></button><button type="button" class="sound-card" data-sound="shuffle"><strong>shuffle</strong><small>항목 섞기</small></button><button type="button" class="sound-card" data-sound="spin-tick"><strong>spin-tick</strong><small>룰렛 칸 통과음</small></button><button type="button" class="sound-card" data-sound="spin-stop"><strong>spin-stop</strong><small>룰렛 정지</small></button><button type="button" class="sound-card" data-sound="random-reveal"><strong>random-reveal</strong><small>랜덤 결과 공개</small></button><button type="button" class="sound-card" data-sound="winner"><strong>winner</strong><small>당첨자·승자 발표</small></button><button type="button" class="sound-card" data-sound="loser"><strong>loser</strong><small>탈락자·패자 발표</small></button><button type="button" class="sound-card" data-sound="jump"><strong>jump</strong><small>점프 동작</small></button><button type="button" class="sound-card" data-sound="land"><strong>land</strong><small>착지 동작</small></button><button type="button" class="sound-card" data-sound="dash"><strong>dash</strong><small>빠른 이동·부스트</small></button><button type="button" class="sound-card" data-sound="target-hit"><strong>target-hit</strong><small>타깃 명중</small></button><button type="button" class="sound-card" data-sound="target-miss"><strong>target-miss</strong><small>타깃 빗나감</small></button><button type="button" class="sound-card" data-sound="input-key"><strong>input-key</strong><small>키보드·문자 입력</small></button><button type="button" class="sound-card" data-sound="drag-start"><strong>drag-start</strong><small>드래그 시작</small></button><button type="button" class="sound-card" data-sound="drag-end"><strong>drag-end</strong><small>드래그 놓기</small></button><button type="button" class="sound-card" data-sound="save"><strong>save</strong><small>저장 완료</small></button><button type="button" class="sound-card" data-sound="retry"><strong>retry</strong><small>재도전·다시 하기</small></button><button type="button" class="sound-card" data-sound="swipe"><strong>swipe</strong><small>빠른 스와이프</small></button><button type="button" class="sound-card" data-sound="whoosh"><strong>whoosh</strong><small>화면 전환·빠른 통과</small></button><button type="button" class="sound-card" data-sound="slide"><strong>slide</strong><small>미끄러짐·슬라이드 이동</small></button><button type="button" class="sound-card" data-sound="bounce"><strong>bounce</strong><small>튕김·반동</small></button><button type="button" class="sound-card" data-sound="roll"><strong>roll</strong><small>굴러가기·주사위 회전</small></button><button type="button" class="sound-card" data-sound="impact-soft"><strong>impact-soft</strong><small>가벼운 충돌·착지</small></button><button type="button" class="sound-card" data-sound="impact-hard"><strong>impact-hard</strong><small>강한 충돌·실패 타격</small></button><button type="button" class="sound-card" data-sound="piece-place"><strong>piece-place</strong><small>퍼즐 조각 놓기</small></button><button type="button" class="sound-card" data-sound="piece-remove"><strong>piece-remove</strong><small>퍼즐 조각 제거</small></button><button type="button" class="sound-card" data-sound="match"><strong>match</strong><small>같은 항목 연결·매치</small></button><button type="button" class="sound-card" data-sound="merge"><strong>merge</strong><small>합치기·진화</small></button><button type="button" class="sound-card" data-sound="line-clear"><strong>line-clear</strong><small>줄·행 완성 제거</small></button><button type="button" class="sound-card" data-sound="false-start"><strong>false-start</strong><small>너무 일찍 누름·부정 출발</small></button><button type="button" class="sound-card" data-sound="buzzer"><strong>buzzer</strong><small>종료·탈락 버저</small></button><button type="button" class="sound-card" data-sound="drumroll"><strong>drumroll</strong><small>결과 공개 전 긴장 연출</small></button><button type="button" class="sound-card" data-sound="achievement"><strong>achievement</strong><small>업적·특별 보상 달성</small></button><button type="button" class="sound-card" data-sound="tie"><strong>tie</strong><small>무승부·동점 결과</small></button><button type="button" class="sound-card" data-sound="sadari"><strong>sadari</strong><small>사다리 레이스 진행 전용 사운드</small></button>
+  </section>
+</main>
+
+<script src="./js/hm-audio-manager.v1.js?v=1.2.0"></script>
+<script>
+(() => {
+  "use strict";
+
+  const BASE_URL = "./sfx/core/v1/";
+  const status = document.getElementById("status");
+  const meta = document.getElementById("meta");
+  const toggle = document.getElementById("soundToggle");
+  const stopButton = document.getElementById("stopAll");
+  const reloadButton = document.getElementById("reloadManifest");
+  let currentButton = null;
+
+  HMAudio.init({ baseUrl: BASE_URL, volume: 0.85 });
+
+  function setStatus(message, type = "") {
+    status.textContent = message;
+    status.className = "status" + (type ? " " + type : "");
+  }
+
+  function updateToggle() {
+    const enabled = HMAudio.isEnabled();
+    toggle.textContent = enabled ? "사운드 켜짐" : "사운드 꺼짐";
+    toggle.classList.toggle("primary", enabled);
+  }
+
+  function clearCurrent() {
+    if (currentButton) currentButton.classList.remove("is-playing");
+    currentButton = null;
+  }
+
+  async function checkManifest() {
+    try {
+      const response = await fetch(BASE_URL + "sounds.json?v=1.2.0", { cache: "no-store" });
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      const manifest = await response.json();
+      const count = Object.keys(manifest.sounds || {}).length;
+      meta.textContent =
+        "HMAudio " + HMAudio.getVersion() +
+        " · sounds.json " + count + "개 · baseUrl " + new URL(BASE_URL, location.href).href;
+      setStatus("관리자와 sounds.json 연결 정상", "success");
+    } catch (error) {
+      meta.textContent = "sounds.json을 불러오지 못했습니다: " + error.message;
+      setStatus("GitHub Pages 배포 경로를 확인해 주세요.", "error");
+    }
+  }
+
+  toggle.addEventListener("click", () => {
+    const enabled = HMAudio.setEnabled(!HMAudio.isEnabled());
+    updateToggle();
+    setStatus(enabled ? "사운드를 켰습니다." : "사운드를 껐습니다.");
+  });
+
+  stopButton.addEventListener("click", () => {
+    HMAudio.stopAll();
+    clearCurrent();
+    setStatus("모든 사운드를 정지했습니다.");
+  });
+
+  reloadButton.addEventListener("click", async () => {
+    HMAudio.clearCache();
+    await checkManifest();
+  });
+
+  document.addEventListener("click", async (event) => {
+    const button = event.target.closest("[data-sound]");
+    if (!button) return;
+
+    if (!HMAudio.isEnabled()) {
+      HMAudio.setEnabled(true);
+      updateToggle();
+    }
+
+    HMAudio.unlock();
+    HMAudio.stopAll();
+    clearCurrent();
+
+    const name = button.dataset.sound;
+    currentButton = button;
+    button.classList.add("is-playing");
+    setStatus(name + " 불러오는 중");
+
+    const played = await HMAudio.play(name, { volume: 1 });
+
+    if (played) {
+      setStatus(name + " 재생 요청 완료", "success");
+    } else {
+      button.classList.remove("is-playing");
+      currentButton = null;
+      setStatus(name + " 재생 실패: sounds.json과 MP3 파일을 확인하세요.", "error");
+    }
+
+    window.setTimeout(() => {
+      if (currentButton === button) {
+        button.classList.remove("is-playing");
+        currentButton = null;
+      }
+    }, 6000);
+  });
+
+  updateToggle();
+  checkManifest();
+})();
+</script>
+</body>
+</html>
