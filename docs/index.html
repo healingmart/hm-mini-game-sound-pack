@@ -1,8 +1,16 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Healing Mart Mini Game Sound Pack</title>
-<style>*{box-sizing:border-box}body{margin:0;padding:28px;background:#f4f6fb;color:#20263a;font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif}main{max-width:1100px;margin:auto}h1{margin:0 0 8px}p{color:#667085}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:22px}button{min-height:76px;padding:13px;text-align:left;border:1px solid #dfe4ed;border-radius:14px;background:#fff;cursor:pointer;box-shadow:0 5px 15px rgba(30,40,75,.06)}button:hover{transform:translateY(-1px);border-color:#8b80ef}strong,small{display:block}small{margin-top:4px;color:#7b8498}.notice{padding:13px 15px;border-radius:12px;background:#eeeaff;color:#4d43b8;font-weight:700}</style>
-</head><body><main><h1>Healing Mart Mini Game Sound Pack</h1><p class="notice">버튼을 눌러 88개 사운드를 미리 들어볼 수 있습니다.</p><div class="grid"><button data-sound="ui-tap"><strong>ui-tap</strong><small>일반 버튼 터치</small></button>
+<style>*{box-sizing:border-box}body{margin:0;padding:28px;background:#f4f6fb;color:#20263a;font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif}main{max-width:1100px;margin:auto}h1{margin:0 0 8px}p{color:#667085}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:22px}button{min-height:76px;padding:13px;text-align:left;border:1px solid #dfe4ed;border-radius:14px;background:#fff;cursor:pointer;box-shadow:0 5px 15px rgba(30,40,75,.06)}button:hover{transform:translateY(-1px);border-color:#8b80ef}strong,small{display:block}small{margin-top:4px;color:#7b8498}.notice{padding:13px 15px;border-radius:12px;background:#eeeaff;color:#4d43b8;font-weight:700}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:12px}
+.toolbar button{min-height:44px;padding:10px 14px;text-align:center;font-weight:800}
+.status{min-height:44px;display:flex;align-items:center;padding:10px 14px;border:1px solid #dfe4ed;border-radius:12px;background:#fff;color:#596176;font-size:14px}
+button.is-playing{border-color:#6255d9;box-shadow:0 0 0 3px rgba(98,85,217,.12)}</style>
+</head><body><main><h1>Healing Mart Mini Game Sound Pack</h1><p class="notice">버튼을 눌러 88개 사운드를 미리 들어볼 수 있습니다.</p>
+<div class="toolbar">
+  <button type="button" id="stopPreview">모두 정지</button>
+  <div class="status" id="previewStatus" role="status" aria-live="polite">사운드 대기 중</div>
+</div><div class="grid"><button data-sound="ui-tap"><strong>ui-tap</strong><small>일반 버튼 터치</small></button>
 <button data-sound="ui-select"><strong>ui-select</strong><small>옵션 선택 완료</small></button>
 <button data-sound="ui-open"><strong>ui-open</strong><small>모달·바텀시트 열기</small></button>
 <button data-sound="ui-close"><strong>ui-close</strong><small>모달·바텀시트 닫기</small></button>
@@ -90,6 +98,99 @@
 <button data-sound="drumroll"><strong>drumroll</strong><small>결과 공개 전 긴장 연출</small></button>
 <button data-sound="achievement"><strong>achievement</strong><small>업적·특별 보상 달성</small></button>
 <button data-sound="tie"><strong>tie</strong><small>무승부·동점 결과</small></button></div></main>
-<script src="./js/hm-audio-manager.v1.js"></script>
-<script>HMAudio.init({baseUrl:"./sfx/core/v1/",volume:.75});document.addEventListener("click",e=>{const b=e.target.closest("[data-sound]");if(!b)return;HMAudio.unlock();HMAudio.play(b.dataset.sound);});</script>
+<script>
+(() => {
+  "use strict";
+
+  const soundBases = [
+    "https://healingmart.github.io/hm-mini-game-sound-pack/sfx/core/v1/",
+    "https://raw.githubusercontent.com/healingmart/hm-mini-game-sound-pack/main/docs/sfx/core/v1/"
+  ];
+  const status = document.getElementById("previewStatus");
+  const stopButton = document.getElementById("stopPreview");
+  let currentAudio = null;
+  let currentButton = null;
+
+  function setStatus(message) {
+    status.textContent = message;
+  }
+
+  function clearPlayingState() {
+    if (currentButton) {
+      currentButton.classList.remove("is-playing");
+      currentButton.removeAttribute("aria-pressed");
+    }
+    currentButton = null;
+  }
+
+  function stopCurrent(message = "사운드 정지") {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio.src = "";
+      currentAudio = null;
+    }
+    clearPlayingState();
+    setStatus(message);
+  }
+
+  async function playPreview(button) {
+    const name = button.dataset.sound;
+    if (!name) return;
+
+    stopCurrent("사운드 준비 중");
+
+    const encodedName = encodeURIComponent(name);
+    const urls = soundBases.map((base) => base + encodedName + ".mp3?v=20260716");
+    let lastError = null;
+
+    currentButton = button;
+    button.classList.add("is-playing");
+    button.setAttribute("aria-pressed", "true");
+
+    for (let index = 0; index < urls.length; index += 1) {
+      const url = urls[index];
+      const audio = new Audio(url);
+      audio.preload = "auto";
+      audio.volume = 0.9;
+      currentAudio = audio;
+
+      try {
+        await audio.play();
+
+        audio.addEventListener("playing", () => {
+          if (currentAudio === audio) setStatus(name + " 재생 중");
+        }, { once: true });
+
+        audio.addEventListener("ended", () => {
+          if (currentAudio === audio) {
+            currentAudio = null;
+            clearPlayingState();
+            setStatus(name + " 재생 완료");
+          }
+        }, { once: true });
+
+        return;
+      } catch (error) {
+        lastError = error;
+        audio.pause();
+        audio.src = "";
+        if (currentAudio === audio) currentAudio = null;
+      }
+    }
+
+    clearPlayingState();
+    setStatus(name + " 파일을 공개 주소에서 불러오지 못했습니다. GitHub Pages 배포 상태를 확인해 주세요.");
+    console.error("Sound preview failed:", name, urls, lastError);
+  }
+
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-sound]");
+    if (button) playPreview(button);
+  });
+
+  stopButton.addEventListener("click", () => stopCurrent());
+  window.addEventListener("pagehide", () => stopCurrent("사운드 대기 중"));
+})();
+</script>
 </body></html>
